@@ -1,16 +1,50 @@
-# React + Vite
+# 📚 Snap & Study — AI Vision Study Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Turn your study images into smarter learning with AI!
 
-Currently, two official plugins are available:
+Snap & Study is an AI-powered learning application that transforms educational images into easy-to-understand study materials. Upload an image of your notes or textbook content and get AI-generated explanations, summaries, key points, and practice questions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Demo
 
-## React Compiler
+**Try the application:** https://snap-and-study-1.onrender.com
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the Oxlint configuration
+- 🖼️ Upload images containing educational content.
+- 🧠 Get simple explanations of difficult concepts.
+- 📝 Generate concise study summaries.
+- 🔑 Identify important points for revision.
+- ❓ Create practice questions to test your understanding.
+- 📖 Save and revisit study sessions in your browser.
+- 💻 Use a clean, student-friendly interface.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🛠️ Technologies Used
+
+- React
+- Vite
+- JavaScript
+- CSS
+- Node.js
+- Express.js
+- Google Gemini API
+
+## 🚀 How to Use
+
+1. Open the live website.
+2. Upload an image of your study material.
+3. Submit it for AI analysis.
+4. Review the generated explanations, summaries, key points, and questions.
+5. Use the study materials for revision.
+
+## 🔗 Project Links
+
+- **Live Website:** https://snap-and-study-1.onrender.com
+- **GitHub Repository:** https://github.com/janasruthimylsamy/snap-and-study
+
+## 🎯 Objective
+
+To make studying easier and more effective by using artificial intelligence to transform visual learning materials into organized, understandable study resources.
+
+---
+
+**Snap & Study — Learn smarter, one image at a time.**
