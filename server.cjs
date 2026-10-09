@@ -1,4 +1,3 @@
-
 const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
@@ -8,24 +7,27 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
-const GEMINI_MODEL = 'gemini-3.8-flash'
+const GEMINI_MODEL = 'gemini-2.5-flash'
 
+// Middleware
 app.use(cors())
 app.use(express.json({ limit: '25mb' }))
 
+// Health check
 app.get('/', (req, res) => {
   res.json({
     message: 'Snap & Study AI server is running!',
   })
 })
 
+// Analyze uploaded study image
 app.post('/api/analyze', async (req, res) => {
   try {
     const { image } = req.body || {}
 
     if (!GEMINI_API_KEY) {
       return res.status(500).json({
-        error: 'Gemini API key is missing. Check your .env file.',
+        error: 'Gemini API key is missing. Configure GEMINI_API_KEY.',
       })
     }
 
@@ -45,9 +47,8 @@ app.post('/api/analyze', async (req, res) => {
       })
     }
 
-    const mimeType = match[1] === 'image/jpg'
-      ? 'image/jpeg'
-      : match[1]
+    const mimeType =
+      match[1] === 'image/jpg' ? 'image/jpeg' : match[1]
 
     const base64Data = match[2]
 
@@ -111,13 +112,13 @@ Use clear headings and readable formatting.`,
         data.error?.message || 'Unknown API error'
       )
 
-      return res.status(apiResponse.status).json({
-        error: data.error?.message || 'Gemini API request failed.',
+      return res.status(502).json({
+        error: 'AI analysis failed. Please try again later.',
       })
     }
 
     const result = data.candidates?.[0]?.content?.parts
-      ?.map(part => part.text || '')
+      ?.map((part) => part.text || '')
       .join('\n')
       .trim()
 
@@ -132,12 +133,13 @@ Use clear headings and readable formatting.`,
     console.error('AI ERROR:', error.message)
 
     return res.status(500).json({
-      error: error.message || 'AI analysis failed.',
+      error: 'An unexpected error occurred during AI analysis.',
     })
   }
 })
 
-app.listen(PORT, () => {
-  console.log(`Snap & Study server running at http://localhost:${PORT}`)
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Snap & Study server running on port ${PORT}`)
   console.log('Gemini API key loaded:', Boolean(GEMINI_API_KEY))
 })
